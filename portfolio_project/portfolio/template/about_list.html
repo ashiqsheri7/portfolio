@@ -1,0 +1,29 @@
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+
+    <h1>About</h1>
+    <a href="{% url 'about_create' %}">Create New</a>
+    <ul>
+        {% for item in about %}
+        <li>{{ item.title }} - {{ item.description }}
+            <a href="{% url 'about_update' item.pk %}">Edit</a>
+            <form action="{% url 'about_delete' item.pk %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="submit" value="Delete">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
+

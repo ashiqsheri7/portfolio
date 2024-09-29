@@ -1,0 +1,21 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Link to the CSS file -->
+</head>
+<body>
+    <h1>My Education</h1>
+    <ul>
+        {% for education in object_list %}
+        <li>
+            <h2>{{ education.degree }} from {{ education.institution_name }}</h2>
+            <p>Start: {{ education.start_date }}</p>
+            <p>End: {% if education.end_date %}{{ education.end_date }}{% else %}Present{% endif %}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Link to your CSS file -->
+</head>
+<body>
+    <h1>My Experiences</h1>
+    <ul>
+        {% for experience in object_list %}
+        <li>
+            <h2>{{ experience.role }} at {{ experience.company_name }}</h2>
+            <p>Start: {{ experience.start_date }}</p>
+            <p>End: {% if experience.end_date %}{{ experience.end_date }}{% else %}Present{% endif %}</p>
+            <p>{{ experience.description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
